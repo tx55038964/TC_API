@@ -1,0 +1,5 @@
+{
+  "errorCode": "500",
+  "errorText": "请勿并发请求",
+  "returnCode": -1
+}
