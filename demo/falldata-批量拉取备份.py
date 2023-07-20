@@ -1,12 +1,12 @@
+import json
+
 import pandas as pd
 import pymysql
 
-import json
 
-
-def falldata():
+def fall_data():
     # 拼接文件路径
-    file_path = r"demo/json/data.json"
+    file_path = r"demo/json_data/data.json_data"
     print(file_path)
     file_read = open(file_path, 'r', encoding='utf-8')
     data = json.load(file_read)
@@ -49,9 +49,9 @@ def falldata():
         # 执行SQL语句
         cursor.execute(insert_query, [val for row in df.values for val in row])
         connection.commit()
-        print(f"更新数据到MYSQL数据库中成功")
+        print("更新数据到MYSQL数据库中成功")
     # 关闭数据库连接
     connection.close()
 
 
-falldata()
+fall_data()

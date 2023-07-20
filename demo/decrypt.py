@@ -1,12 +1,13 @@
 from util.EncryptData import EncryptData
 
+
 def decrypt():
-    path = r"demo/json/response.json"
+    path = r"demo/json_data/response.json_data"
     file = open(path, 'r', encoding='utf-8')
 
-    file_result = open(r"demo/json/data.json", 'w', encoding='utf-8')
+    file_result = open(r"demo/json_data/data.json_data", 'w', encoding='utf-8')
 
-    # ??
+    # 密码
     password = 'MQ0WINT60DXP7U7R09A70V6Z1SEDIGYH'
 
     # ???????, file.read() ??????

@@ -1,21 +1,9 @@
-import pandas as pd
-import pymysql
-import redis
-from redisbloom.client import Client
-
 import json
 
-# 连接到 Redis
-redis_client = redis.Redis(host='localhost', port=6379, db=0)
+import pandas as pd
+import pymysql
 
-# 创建 RedisBloom 客户端
-bloom_client = Client(redis_client)
-
-# key
-key = 'id_name'
-
-# 创建布隆过滤器
-bloom_client.bfCreate(key, errorRate=0.01, capacity=10000)
+from SLAPI import bloom_client, key
 
 
 def generate_identifier(row):
@@ -26,7 +14,7 @@ def generate_identifier(row):
 
 def falldata():
     # 拼接文件路径
-    file_path = r"demo/json/data.json"
+    file_path = r"demo/json_data/data.json_data"
     print(file_path)
     file_read = open(file_path, 'r', encoding='utf-8')
     data = json.load(file_read)
@@ -75,11 +63,10 @@ def falldata():
                 cursor.execute(insert_query, row)
                 connection.commit()
 
-            # 将标识符添加到布隆过滤器中
-            # redis_client.execute_command('BF.ADD', bloom_filter_name, identifier)
+            # 将标识符添加到布隆过滤器中,表示已经插入到数据库中.
             bloom_client.bfAdd(key, identifier)
 
-    print(f"更新数据到MYSQL数据库中成功")
+    print("更新数据到MYSQL数据库中成功")
 
     # 关闭数据库连接
     connection.close()

@@ -11,3 +11,8 @@ PyYAML==6.0
 requests==2.31.0
 shellescape==3.8.1
 urllib3==2.0.3
+
+pandas~=2.0.3
+PyMySQL~=1.1.0
+redis~=3.5.3
+redisbloom~=0.4.1

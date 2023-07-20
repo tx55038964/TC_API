@@ -16,7 +16,7 @@ def generate_identifier(row):
 
 def falldata():
     # 拼接文件路径
-    file_path = r"demo/json/data.json"
+    file_path = r"demo/json_data/data.json"
     print(file_path)
     file_read = open(file_path, 'r', encoding='utf-8')
     data = json.load(file_read)

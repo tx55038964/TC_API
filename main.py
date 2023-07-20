@@ -4,7 +4,7 @@ import pandas as pd
 import pymysql
 
 # 拼接文件路径
-file_path = r"demo/json/data.json"
+file_path = r"demo/json_data/data.json"
 file_read = open(file_path, 'r', encoding='utf-8')
 data = json.load(file_read)
 df = pd.DataFrame(data["data"]["records"], columns=data["data"]["columnNames"])
